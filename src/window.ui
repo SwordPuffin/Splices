@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <template class="SplicesWindow" parent="GtkApplicationWindow">
+    <property name="default-width">640</property>
+    <property name="default-height">530</property>
+    <property name="titlebar">
+      <object class="GtkHeaderBar" id="header_bar">
+        <child type="end">
+          <object class="GtkBox">
+            <child>
+              <object class="GtkMenuButton" id="game_list">
+                  <property name="icon-name">applications-games-symbolic</property>
+                  <property name="menu-model">games_menu</property>
+                  <property name="margin-end">10</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkMenuButton">
+                <property name="primary">True</property>
+                <property name="icon-name">open-menu-symbolic</property>
+                <property name="tooltip-text" translatable="yes">Menu</property>
+                <property name="menu-model">primary_menu</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child type="start">
+          <object class="GtkBox">
+            <child>
+              <object class="GtkButton" id="start_button">
+                <property name="label">Start</property>
+                <property name="action-name">win.start</property>
+                <property name="height-request">50</property>
+                <property name="width-request">100</property>
+                <style>
+                  <class name="title-4"/>
+                  <class name="suggested-action"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="clock">
+                <property name="label">Time: 30s</property>
+                <property name="action-name">win.times_words_change</property>
+                <property name="width-request">100</property>
+                <property name="margin-start">10</property>
+                <style>
+                  <class name="title-4"/>
+                  <class name="clock"/>
+                </style>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </property>
+    <property name="child">
+      <object class="GtkBox">
+        <child>
+          <object class="GtkButton">
+            <child>
+              <object class="GtkLabel" id="found_words">
+                <property name="label"></property>
+                <property name="wrap">true</property>
+              </object>
+            </child>
+            <property name="vexpand">true</property>
+            <property name="margin-start">52</property>
+            <property name="margin-end">52</property>
+            <property name="sensitive">false</property>
+            <style>
+              <class name="title-4"/>
+              <class name="opaque"/>
+            </style>
+          </object>
+        </child>
+        <property name="margin-top">25</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">20</property>
+        <child>
+          <object class="GtkGrid">
+            <child>
+              <object class="GtkButton" id="current_word">
+                <property name="label"></property>
+                <property name="sensitive">false</property>
+                <property name="hexpand">true</property>
+                <property name="vexpand">true</property>
+                <property name="margin-start">52</property>
+                <property name="margin-end">12</property>
+                <style>
+                  <class name="title-4"/>
+                  <class name="opaque"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="score">
+                <property name="label"></property>
+                <property name="sensitive">false</property>
+                <property name="margin-end">52</property>
+                <property name="hexpand">true</property>
+                <style>
+                  <class name="title-4"/>
+                  <class name="opaque"/>
+                </style>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkGrid" id="grid">
+            <property name="margin-start">30</property>
+            <property name="margin-end">30</property>
+            <property name="margin-bottom">30</property>
+            <property name="row-spacing">20</property>
+            <property name="column-spacing">20</property>
+            <property name="sensitive">false</property>
+            <style>
+              <class name="title-1"/>
+            </style>
+            <child>
+              <object class="GtkButton" id="button1">
+                <property name="hexpand">true</property>
+                <property name="vexpand">true</property>
+                <property name="action-name">win.item1</property>
+                <property name="label"></property>
+                <layout>
+                  <property name="column">0</property>
+                  <property name="row">0</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="button2">
+                <property name="hexpand">true</property>
+                <property name="action-name">win.item2</property>
+                <property name="label"></property>
+                <layout>
+                  <property name="column">1</property>
+                  <property name="row">0</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="button3">
+                <property name="hexpand">true</property>
+                <property name="action-name">win.item3</property>
+                <property name="label"></property>
+                <layout>
+                  <property name="column">2</property>
+                  <property name="row">0</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="button4">
+                <property name="hexpand">true</property>
+                <property name="action-name">win.item4</property>
+                <property name="label"></property>
+                <layout>
+                  <property name="column">3</property>
+                  <property name="row">0</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="button5">
+                <property name="vexpand">true</property>
+                <property name="action-name">win.item5</property>
+                <property name="label"></property>
+                <layout>
+                  <property name="column">0</property>
+                  <property name="row">1</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="button6">
+                <property name="action-name">win.item6</property>
+                <property name="label"></property>
+                <layout>
+                  <property name="column">1</property>
+                  <property name="row">1</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="button7">
+                <property name="action-name">win.item7</property>
+                <property name="label"></property>
+                <layout>
+                  <property name="column">2</property>
+                  <property name="row">1</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="button8">
+                <property name="action-name">win.item8</property>
+                <property name="label"></property>
+                <layout>
+                  <property name="column">3</property>
+                  <property name="row">1</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="button9">
+                <property name="vexpand">true</property>
+                <property name="action-name">win.item9</property>
+                <property name="label"></property>
+                <layout>
+                  <property name="column">0</property>
+                  <property name="row">2</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="button10">
+                <property name="action-name">win.item10</property>
+                <property name="label"></property>
+                <layout>
+                  <property name="column">1</property>
+                  <property name="row">2</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="button11">
+                <property name="action-name">win.item11</property>
+                <property name="label"></property>
+                <layout>
+                  <property name="column">2</property>
+                  <property name="row">2</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="button12">
+                <property name="action-name">win.item12</property>
+                <property name="label"></property>
+                <layout>
+                  <property name="column">3</property>
+                  <property name="row">2</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="button13">
+                <property name="action-name">win.item13</property>
+                <property name="label"></property>
+                <layout>
+                  <property name="column">0</property>
+                  <property name="row">3</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="button14">
+                <property name="vexpand">true</property>
+                <property name="action-name">win.item14</property>
+                <property name="label"></property>
+                <layout>
+                  <property name="column">1</property>
+                  <property name="row">3</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="button15">
+                <property name="action-name">win.item15</property>
+                <property name="label"></property>
+                <layout>
+                  <property name="column">2</property>
+                  <property name="row">3</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="button16">
+                <property name="action-name">win.item16</property>
+                <property name="label"></property>
+                <layout>
+                  <property name="column">3</property>
+                  <property name="row">3</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </property>
+  </template>
+  <menu id="primary_menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute>
+        <attribute name="action">win.show-help-overlay</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_About Splices</attribute>
+        <attribute name="action">app.about</attribute>
+      </item>
+    </section>
+  </menu>
+  <menu id="games_menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Normal Game</attribute>
+        <attribute name="action">app.normal_game</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Free Play</attribute>
+        <attribute name="action">app.free_play</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Free Play With Timer</attribute>
+        <attribute name="action">app.free_play_with_timer</attribute>
+      </item>
+    </section>
+  </menu>
+</interface>
+
