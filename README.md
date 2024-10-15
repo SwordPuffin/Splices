@@ -21,3 +21,17 @@ s - Stop or start a game
 Ctl-q - Exit
 
 Ctl-? - Show keyboard shortcuts
+
+# To edit the app in Gnome-Builder
+
+Run the following commands in a terminal:
+
+(Make a folder named 'Projects' in your home directory if it doesn't already exist)
+```
+cd Projects
+```
+```
+git clone https://github.com/SwordPuffin/Splices
+```
+Open Gnome-Builder and it should appear at the top in 'Recent Projects'
+
