@@ -26,6 +26,8 @@ Ctl-? - Show keyboard shortcuts
 
 ![Screenshot](https://github.com/SwordPuffin/Splices/blob/master/data/Screenshot.png)
 
+![Screenshot](https://github.com/SwordPuffin/Splices/blob/master/data/In_Game_Screenshot.png)
+
 # To edit the app in Gnome-Builder
 
 Run the following commands in a terminal:
