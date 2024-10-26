@@ -40,7 +40,6 @@ class SplicesWindow(Gtk.ApplicationWindow):
     game_active = False
     consonants = ["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z"]
     vowels = ["A", "E", "I", "O", "U"]
-
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
@@ -77,6 +76,7 @@ class SplicesWindow(Gtk.ApplicationWindow):
         self.set_title("")
         self.normal_game = False
         self.words = 5
+        # self.set_cursor_theme_size(31)
 
     #Checks if the submitted word exists in words.txt
     def check(self, actiom, _):
@@ -89,7 +89,7 @@ class SplicesWindow(Gtk.ApplicationWindow):
                      if f"/{self.current_word.get_label().lower()}/" in line and f"/{self.current_word.get_label().lower()}/" not in self.found:
                         if(self.normal_game):
                             self.words -= 1
-                            self.clock.set_label(f"Words: {self.words}")
+                            self.clock.set_label(f"Words left: {self.words}")
                             if(self.words == 0):
                                 #Show the end dialog once the player has run out of words
                                 self.end_dialog()
@@ -127,7 +127,7 @@ class SplicesWindow(Gtk.ApplicationWindow):
             self.start_time = self.timer
         else:
             self.words += 1
-            self.clock.set_label(f"Words: {self.words}")
+            self.clock.set_label(f"Words left: {self.words}")
 
     #Function that is activated to either forcefully stop or start the game
     def on_start_clicked(self, action, _):
@@ -143,7 +143,7 @@ class SplicesWindow(Gtk.ApplicationWindow):
             self.clock.set_label("Time: 30s")
         elif(self.game_active == False and self.normal_game):
             self.words = 5
-            self.clock.set_label("Words: 5")
+            self.clock.set_label("Words left: 5")
         if(self.clock.is_visible() and self.normal_game == False):
             self.clock.set_sensitive(not self.game_active)
             self.timer_id = GLib.timeout_add(100, self.update)

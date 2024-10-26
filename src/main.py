@@ -34,6 +34,7 @@ class SplicesApplication(Gtk.Application):
 
         icon_theme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default())
         icon_theme.add_resource_path("../data/icons/scalable/apps")
+        icon_theme.add_resource_path("../data/icons/symbolic/apps")
 
         self.set_accels_for_action('win.enter', ['w'])
         self.set_accels_for_action('win.start', ['s'])
@@ -63,7 +64,7 @@ class SplicesApplication(Gtk.Application):
         self.window = self.props.active_window
         self.window.normal_game = True
         self.window.clock.set_visible(True)
-        self.window.clock.set_label("Words: 5")
+        self.window.clock.set_label("Words left: 5")
 
     def do_activate(self):
         """Called when the application is activated.
