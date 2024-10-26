@@ -22,7 +22,7 @@ Ctl-q - Exit
 
 Ctl-? - Show keyboard shortcuts
 
-#Screenshots
+# Screenshots
 
 ![Screenshot](https://github.com/SwordPuffin/Splices/blob/master/data/Screenshot.png)
 
