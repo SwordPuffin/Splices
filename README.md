@@ -24,7 +24,7 @@ Ctl-? - Show keyboard shortcuts
 
 #Screenshots
 
-[Alt text](data/Screenshot.png)
+[Screenshot](https://github.com/SwordPuffin/Splices/blob/master/data/Screenshot.png)
 
 # To edit the app in Gnome-Builder
 
