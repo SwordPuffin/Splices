@@ -1,6 +1,6 @@
 desktop_file = i18n.merge_file(
-        input: 'org.swordpuffin.splices.desktop.in',
-       output: 'org.swordpuffin.splices.desktop',
+        input: 'io.github.swordpuffin.splices.desktop.in',
+       output: 'io.github.swordpuffin.splices.desktop',
          type: 'desktop',
        po_dir: '../po',
       install: true,
@@ -13,8 +13,8 @@ if desktop_utils.found()
 endif
 
 appstream_file = i18n.merge_file(
-        input: 'org.swordpuffin.splices.metainfo.xml.in',
-       output: 'org.swordpuffin.splices.metainfo.xml',
+        input: 'io.github.swordpuffin.splices.metainfo.xml.in',
+       output: 'io.github.swordpuffin.splices.metainfo.xml',
        po_dir: '../po',
       install: true,
   install_dir: get_option('datadir') / 'metainfo'
@@ -24,7 +24,7 @@ appstreamcli = find_program('appstreamcli', required: false, disabler: true)
 test('Validate appstream file', appstreamcli,
      args: ['validate', '--no-net', '--explain', appstream_file])
 
-install_data('org.swordpuffin.splices.gschema.xml',
+install_data('io.github.swordpuffin.splices.gschema.xml',
   install_dir: get_option('datadir') / 'glib-2.0' / 'schemas'
 )
 

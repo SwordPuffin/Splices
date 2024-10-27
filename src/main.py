@@ -29,7 +29,7 @@ class SplicesApplication(Gtk.Application):
     """The main application singleton class."""
 
     def __init__(self):
-        super().__init__(application_id='org.swordpuffin.splices',
+        super().__init__(application_id='io.github.swordpuffin.splices',
                          flags=Gio.ApplicationFlags.DEFAULT_FLAGS)
 
         icon_theme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default())
@@ -82,7 +82,7 @@ class SplicesApplication(Gtk.Application):
         about = Gtk.AboutDialog(transient_for=self.props.active_window,
                                 modal=True,
                                 program_name='Splices',
-                                logo_icon_name='org.swordpuffin.splices',
+                                logo_icon_name='io.github.swordpuffin.splices',
                                 version='0.1.0',
                                 authors=['Nathan Perlman (SwordPuffin)'],
                                 copyright='© 2024 Nathan Perlman')

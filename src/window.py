@@ -21,7 +21,7 @@ import gi
 import random
 gi.require_version('Gtk', '4.0')
 from gi.repository import Gtk, Adw, Gio, GLib, Gdk
-@Gtk.Template(resource_path='/org/swordpuffin/splices/window.ui')
+@Gtk.Template(resource_path='/io/github/swordpuffin/splices/window.ui')
 class SplicesWindow(Gtk.ApplicationWindow):
 
     __gtype_name__ = 'SplicesWindow'

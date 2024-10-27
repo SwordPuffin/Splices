@@ -1,6 +1,6 @@
-data/org.swordpuffin.splices.desktop.in
-data/org.swordpuffin.splices.metainfo.xml.in
-data/org.swordpuffin.splices.gschema.xml
+data/io.github.swordpuffin.splices.desktop.in
+data/io.github.swordpuffin.splices.metainfo.xml.in
+data/io.github.swordpuffin.splices.gschema.xml
 src/main.py
 src/window.py
 src/window.ui

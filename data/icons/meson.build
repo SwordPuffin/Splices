@@ -1,4 +1,4 @@
-application_id = 'org.swordpuffin.splices'
+application_id = 'io.github.swordpuffin.splices'
 
 scalable_dir = 'hicolor' / 'scalable' / 'apps'
 install_data(
