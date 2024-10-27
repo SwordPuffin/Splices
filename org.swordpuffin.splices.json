@@ -30,7 +30,7 @@
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "file:///home/nathanperlman/Projects"
+                    "url" : "https://github.com/SwordPuffin/Splices.git"
                 }
             ]
         }
