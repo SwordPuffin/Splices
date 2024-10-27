@@ -21,8 +21,7 @@
   <releases>
     <release version="1.0.0" date="2024-10-17">
       <description>
-        <p>First major release</p>
-      </description>
+        <url> type="details">https://github.com/SwordPuffin/Splices/releases/tag/v1.0.0</url>      </description>
     </release>
   </releases>
 </component>
