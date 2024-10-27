@@ -30,7 +30,8 @@
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "https://github.com/SwordPuffin/Splices.git"
+                    "url" : "https://github.com/SwordPuffin/Splices.git",
+                    "tag" : "v1.0.0"
                 }
             ]
         }
