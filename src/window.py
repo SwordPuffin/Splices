@@ -87,12 +87,12 @@ class SplicesWindow(Gtk.ApplicationWindow):
                  for line in file:
                     #If the word was in words.txt and was not already found. The brackets are used to signify the start and end of the word. EX. /start/
                      if f"/{self.current_word.get_label().lower()}/" in line and f"/{self.current_word.get_label().lower()}/" not in self.found:
+                        self.found.append(f"/{self.current_word.get_label().lower()}/")
+                        self.current_score += len(self.current_word.get_label())
+                        self.score.set_label(f"Score: {self.current_score}")
+                        self.found_words.set_label(self.found_words.get_label() + "  " + self.current_word.get_label())
+                        self.current_word.set_label("")
                         if(self.normal_game):
-                            self.found.append(f"/{self.current_word.get_label().lower()}/")
-                            self.current_score += len(self.current_word.get_label())
-                            self.score.set_label(f"Score: {self.current_score}")
-                            self.found_words.set_label(self.found_words.get_label() + "  " + self.current_word.get_label())
-                            self.current_word.set_label("")
                             self.words -= 1
                             self.clock.set_label(f"Words left: {self.words}")
                             if(self.words == 0):
