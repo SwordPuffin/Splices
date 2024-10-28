@@ -21,6 +21,7 @@
   <developer id="io.github.swordpuffin.splices">
     <name>Nathan Perlman</name>
   </developer>
+  <launchable type="desktop-id">io.github.swordpuffin.splices.desktop</launchable>
   <releases>
     <release version="1.0.0" date="2024-10-17">
         <url type="details">https://github.com/SwordPuffin/Splices/releases/tag/v1.0.0</url>
