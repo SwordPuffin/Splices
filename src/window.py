@@ -88,17 +88,17 @@ class SplicesWindow(Gtk.ApplicationWindow):
                     #If the word was in words.txt and was not already found. The brackets are used to signify the start and end of the word. EX. /start/
                      if f"/{self.current_word.get_label().lower()}/" in line and f"/{self.current_word.get_label().lower()}/" not in self.found:
                         if(self.normal_game):
+                            self.found.append(f"/{self.current_word.get_label().lower()}/")
+                            self.current_score += len(self.current_word.get_label())
+                            self.score.set_label(f"Score: {self.current_score}")
+                            self.found_words.set_label(self.found_words.get_label() + "  " + self.current_word.get_label())
+                            self.current_word.set_label("")
                             self.words -= 1
                             self.clock.set_label(f"Words left: {self.words}")
                             if(self.words == 0):
                                 #Show the end dialog once the player has run out of words
                                 self.end_dialog()
                                 self.on_start_clicked(None, _)
-                        self.found.append(f"/{self.current_word.get_label().lower()}/")
-                        self.current_score += len(self.current_word.get_label())
-                        self.score.set_label(f"Score: {self.current_score}")
-                        self.found_words.set_label(self.found_words.get_label() + "  " + self.current_word.get_label())
-                        self.current_word.set_label("")
                         return True
              self.current_word.set_label("")
              self.shake()
@@ -136,6 +136,7 @@ class SplicesWindow(Gtk.ApplicationWindow):
         self.game_state()
         self.color_change()
         self.elapsed_time = 0
+        self.found.clear()
 
         #If it is a normal game, just reset the words back to five. If it is a timed game, set the clock to 30 seconds once the game is over
         if(self.game_active == False and self.normal_game == False):
