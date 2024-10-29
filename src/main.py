@@ -42,19 +42,20 @@ class SplicesApplication(Gtk.Application):
         self.create_action('quit', lambda *_: self.quit(), ['<primary>q'])
         self.create_action('about', self.on_about_action)
         self.create_action('free_play', self.free_play)
-        self.create_action('free_play_with_timer', self.free_play_with_timer)
+        self.create_action('timed', self.timed)
         self.create_action('normal_game', self.normal)
 
     # The three functions that run when the player hits the buttons that game mode
     # free_play: no timer or word limit
-    # free_play_with_timer: no word limit but must be completed within a certain time frame
+    # timed: no word limit but must be completed within a certain time frame
     # normal: no time limit but there only a limited number of words so try to make them as long as possible
     def free_play(self, widget, _):
         self.window = self.props.active_window
         self.window.normal_game = False
         self.window.clock.set_visible(False)
 
-    def free_play_with_timer(self, widget, _):
+    def timed(self, widget, _):
+        self.window = self.props.active_window
         self.window.clock.set_label("Time: 30s")
         self.window = self.props.active_window
         self.window.normal_game = False
