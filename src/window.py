@@ -19,6 +19,7 @@
 
 import gi
 import random
+gi.require_version('Adw', '1')
 gi.require_version('Gtk', '4.0')
 from gi.repository import Gtk, Adw, Gio, GLib, Gdk
 @Gtk.Template(resource_path='/io/github/swordpuffin/splices/window.ui')
@@ -27,7 +28,6 @@ class SplicesWindow(Gtk.ApplicationWindow):
     __gtype_name__ = 'SplicesWindow'
 
     #All child components from the window.ui file that need to be referenced in the code
-    label = Gtk.Template.Child()
     score = Gtk.Template.Child()
     start_button = Gtk.Template.Child()
     clock = Gtk.Template.Child()
