@@ -315,10 +315,9 @@
         <attribute name="action">app.free_play</attribute>
       </item>
       <item>
-        <attribute name="label" translatable="yes">_Free Play With Timer</attribute>
-        <attribute name="action">app.free_play_with_timer</attribute>
+        <attribute name="label" translatable="yes">_Timed</attribute>
+        <attribute name="action">app.timed</attribute>
       </item>
     </section>
   </menu>
 </interface>
-
