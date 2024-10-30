@@ -47,7 +47,7 @@
                 <property name="margin-start">10</property>
                 <style>
                   <class name="title-4"/>
-                  <class name="clock"/>
+                  <class name="suggested-action"/>
                 </style>
               </object>
             </child>
