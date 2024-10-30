@@ -161,10 +161,12 @@ class SplicesWindow(Gtk.ApplicationWindow):
         self.grid.set_sensitive(self.game_active)
         if(self.game_active == True):
             self.start_button.add_css_class("destructive-action")
+            self.start_button.remove_css_class("suggested-action")
             self.start_button.set_label("Stop")
             self.score.set_label("Score: 0")
         else:
             self.start_button.remove_css_class("destructive-action")
+            self.start_button.add_css_class("suggested-action")
             self.start_button.set_label("Start")
             self.current_word.set_label("")
             self.found_words.set_label("")
