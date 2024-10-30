@@ -1,11 +1,5 @@
 .selected_button {
-    color: @light_1;
     background-color: @green_5;
-}
-
-.clock {
-  color: @dark_5;
-  background-color: @blue_1;
 }
 
 .shake {
@@ -21,5 +15,4 @@
     80% { transform: translateX(5px); }
     100% { transform: translateX(0px); }
 }
-
 
