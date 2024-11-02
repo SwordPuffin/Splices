@@ -4,7 +4,7 @@ A small time killing game where you build words with a random set of letters. Ma
 
 # How To Play
 
-There are three modes: normal, free play, and free play with timer. The goal in normal mode is to maximise the length of the words available given a limited number of guesses. Free play has no maximum word count but free play with timer has a limited time frame so try to go as fast as possible. 
+There are three modes: normal, free play, and timed. The goal in normal mode is to maximise the length of the words available given a limited number of guesses. Free play has no maximum word count but free play with timer has a limited time frame so try to go as fast as possible. 
 
 They can be changed with the game controller icon in the top right
 
@@ -20,10 +20,20 @@ Ctl-? - Show keyboard shortcuts
 
 # Screenshots
 
-![Screenshot](https://github.com/SwordPuffin/Splices/blob/master/data/Screenshot.png)
+![Screenshot](https://github.com/SwordPuffin/Splices/blob/master/data/Screenshot1.png)
 
-![Screenshot](https://github.com/SwordPuffin/Splices/blob/master/data/In_Game_Screenshot.png)
+![Screenshot](https://github.com/SwordPuffin/Splices/blob/master/data/Screenshot2.png)
 
+# Downloading
+
+<a href='https://flathub.org/apps/io.github.swordpuffin.splices'>
+    <img width='240' alt='Get it on Flathub' src='https://flathub.org/api/badge?locale=en'/>
+</a>
+
+Splices is available on the web with Flathub, or:
+```
+flatpak install flathub io.github.swordpuffin.splices
+```
 # To edit the app in Gnome-Builder
 
 Run the following commands in a terminal:
@@ -35,4 +45,4 @@ cd Projects
 ```
 git clone https://github.com/SwordPuffin/Splices
 ```
-Open Gnome-Builder and it should appear at the top in 'Recent Projects'
+Open Gnome-Builder and then hit select folder at the bottom to add the project

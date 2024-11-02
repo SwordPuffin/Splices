@@ -31,6 +31,7 @@ class SplicesWindow(Gtk.ApplicationWindow):
     score = Gtk.Template.Child()
     start_button = Gtk.Template.Child()
     clock = Gtk.Template.Child()
+    extra = Gtk.Template.Child()
     grid = Gtk.Template.Child()
     current_word = Gtk.Template.Child()
     game_list = Gtk.Template.Child()
@@ -70,7 +71,7 @@ class SplicesWindow(Gtk.ApplicationWindow):
         self.current_score = 0
         self.timer_id = None
 
-        #I felt it was better to keep it at one set size just given its layout looked very unusual at full screen
+        #Keep the window at one set size just given its layout looked very unusual at full screen
         self.set_resizable(False)
 
         self.set_title("")
@@ -107,9 +108,11 @@ class SplicesWindow(Gtk.ApplicationWindow):
     #Shakes the current_word box when the word the user is trying to enter does not exist.
     def shake(self):
         #Moves it 5px to the left/right
+        self.current_word.remove_css_class("box")
         self.current_word.add_css_class("shake")
         def remove_shake():
             self.current_word.remove_css_class("shake")
+            self.current_word.add_css_class("box")
             return False
         GLib.timeout_add(500, remove_shake)
 
@@ -133,6 +136,7 @@ class SplicesWindow(Gtk.ApplicationWindow):
     def on_start_clicked(self, action, _):
         self.game_active = not self.game_active
         self.game_list.set_visible(not self.game_active)
+        self.extra.set_visible(not self.game_active)
         self.game_state()
         self.color_change()
         self.elapsed_time = 0
@@ -146,7 +150,6 @@ class SplicesWindow(Gtk.ApplicationWindow):
             self.words = 5
             self.clock.set_label("Words left: 5")
         if(self.clock.is_visible() and self.normal_game == False):
-            self.clock.set_sensitive(not self.game_active)
             self.timer_id = GLib.timeout_add(100, self.update)
 
     #Reset the color of the all the letter buttons in the grid to grey
@@ -157,7 +160,6 @@ class SplicesWindow(Gtk.ApplicationWindow):
 
     #Changes aspects of the game when it either runs out of time, or the stop/start button is clicked
     def game_state(self):
-        self.clock.set_sensitive(not self.game_active)
         self.grid.set_sensitive(self.game_active)
         if(self.game_active == True):
             self.start_button.add_css_class("destructive-action")
@@ -213,6 +215,8 @@ class SplicesWindow(Gtk.ApplicationWindow):
         content.append(length), content.append(found_list)
         length.set_margin_start(30),  found_list.set_margin_start(30)
         length.set_margin_end(30), found_list.set_margin_end(30)
-        length.set_margin_bottom(10), found_list.set_margin_bottom(10)
+        length.set_margin_top(30), found_list.set_margin_top(20)
+        length.set_margin_bottom(20), found_list.set_margin_bottom(20)
         length.add_css_class("title-3"), found_list.add_css_class("title-4")
         dialog.present()
+

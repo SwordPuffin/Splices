@@ -320,6 +320,8 @@
 /seems/
 /real/
 /whose/
+/fang/
+/beak/
 /jog/
 /keep/
 /after/

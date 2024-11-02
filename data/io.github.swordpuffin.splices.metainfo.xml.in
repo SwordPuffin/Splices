@@ -4,7 +4,7 @@
   <name>Splices</name>
 	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>GPL-3.0-or-later</project_license>
-  <summary>A simple word building game made with GTK4 and Python</summary>
+  <summary>A word making game</summary>
   <screenshots>
     <screenshot type="default">
       <image>https://github.com/SwordPuffin/Splices/raw/master/data/Screenshot.png</image>
@@ -23,8 +23,8 @@
   </developer>
   <launchable type="desktop-id">io.github.swordpuffin.splices.desktop</launchable>
   <releases>
-    <release version="1.0.0" date="2024-10-17">
-        <url type="details">https://github.com/SwordPuffin/Splices/releases/tag/v1.0.0</url>
+    <release version="1.0.4" date="2024-11-1">
+        <url type="details">https://github.com/SwordPuffin/Splices/releases/tag/v1.1.4</url>
     </release>
   </releases>
 </component>

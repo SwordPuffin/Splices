@@ -21,11 +21,12 @@ import sys
 import gi
 
 gi.require_version('Gtk', '4.0')
+gi.require_version('Adw', '1')
 
-from gi.repository import Gtk, Gio, Gdk
+from gi.repository import Gtk, Gio, Gdk, Adw
 from .window import SplicesWindow
 
-class SplicesApplication(Gtk.Application):
+class SplicesApplication(Adw.Application):
     """The main application singleton class."""
 
     def __init__(self):
@@ -84,7 +85,7 @@ class SplicesApplication(Gtk.Application):
                                 modal=True,
                                 program_name='Splices',
                                 logo_icon_name='io.github.swordpuffin.splices',
-                                version='0.1.0',
+                                version='1.0.4',
                                 authors=['Nathan Perlman (SwordPuffin)'],
                                 copyright='© 2024 Nathan Perlman')
         about.set_website('https://github.com/SwordPuffin')
