@@ -4,9 +4,7 @@ A small time killing game where you build words with a random set of letters. Ma
 
 # How To Play
 
-There are three modes: normal, free play, and free play with timer. The goal in normal mode is to maximise the length of the words available given a limited number of guesses. Free play has no maximum word count but free play with timer has a limited time frame so try to go as fast as possible. 
-
-They can be changed with the game controller icon in the top right
+There are three modes: length, free play, and timed. The goal in length mode is to maximise the length of the words available given a limited number of guesses. Free play has no maximum word count or timer, unlike timed which (obviously) has a limited time frame. Modes can be changed with the game controller icon in the top right
 
 # Keybinds
 
