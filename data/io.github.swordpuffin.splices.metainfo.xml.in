@@ -7,14 +7,14 @@
   <summary>A word making game</summary>
   <screenshots>
     <screenshot type="default">
-      <image>https://github.com/SwordPuffin/Splices/raw/master/data/Screenshot.png</image>
+      <image>https://github.com/SwordPuffin/Splices/raw/master/data/Screenshot1.png</image>
     </screenshot>
     <screenshot>
-      <image>https://github.com/SwordPuffin/Splices/raw/master/data/In_Game_Screenshot.png</image>
+      <image>https://github.com/SwordPuffin/Splices/raw/master/data/Screenshot2.png</image>
     </screenshot>
   </screenshots>
 	<description>
-	  <p>A small time killer where you make words out of randomly generated letters. You can play in either free play mode, free play with a timer, or normal mode where the goal is maximize the length of the words</p>
+	  <p>A small time killer where you make words out of randomly generated letters. You can play in either free play mode, timed, or length mode where the goal is maximize the size of the words</p>
 	</description>
   <content_rating type="oars-1.1" />
   <url type="homepage">https://github.com/SwordPuffin/Splices</url>
@@ -23,8 +23,8 @@
   </developer>
   <launchable type="desktop-id">io.github.swordpuffin.splices.desktop</launchable>
   <releases>
-    <release version="1.0.4" date="2024-11-1">
-        <url type="details">https://github.com/SwordPuffin/Splices/releases/tag/v1.1.4</url>
+    <release version="1.1.0" date="2024-11-2">
+        <url type="details">https://github.com/SwordPuffin/Splices/releases/tag/v1.1.0</url>
     </release>
   </releases>
 </component>

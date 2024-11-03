@@ -132,7 +132,7 @@
             </style>
             <child>
               <object class="GtkButton" id="button1">
-                <property name="hexpand">true</property>
+                <property name="width-request">140</property>
                 <property name="vexpand">true</property>
                 <property name="action-name">win.item1</property>
                 <property name="label"></property>
@@ -144,7 +144,7 @@
             </child>
             <child>
               <object class="GtkButton" id="button2">
-                <property name="hexpand">true</property>
+                <property name="width-request">140</property>
                 <property name="action-name">win.item2</property>
                 <property name="label"></property>
                 <layout>
@@ -155,7 +155,7 @@
             </child>
             <child>
               <object class="GtkButton" id="button3">
-                <property name="hexpand">true</property>
+                <property name="width-request">140</property>
                 <property name="action-name">win.item3</property>
                 <property name="label"></property>
                 <layout>
@@ -166,7 +166,7 @@
             </child>
             <child>
               <object class="GtkButton" id="button4">
-                <property name="hexpand">true</property>
+                <property name="width-request">140</property>
                 <property name="action-name">win.item4</property>
                 <property name="label"></property>
                 <layout>
@@ -317,9 +317,10 @@
   </menu>
   <menu id="games_menu">
     <section>
+      <attribute name="label" translatable="yes">Modes</attribute>
       <item>
-        <attribute name="label" translatable="yes">_Normal Game</attribute>
-        <attribute name="action">app.normal_game</attribute>
+        <attribute name="label" translatable="yes">_Length</attribute>
+        <attribute name="action">app.length</attribute>
       </item>
       <item>
         <attribute name="label" translatable="yes">_Free Play</attribute>
@@ -328,6 +329,21 @@
       <item>
         <attribute name="label" translatable="yes">_Timed</attribute>
         <attribute name="action">app.timed</attribute>
+      </item>
+    </section>
+    <section>
+      <attribute name="label" translatable="yes">Difficulties</attribute>
+      <item>
+        <attribute name="label" translatable="yes">_Normal</attribute>
+        <attribute name="action">app.normal</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Hard</attribute>
+        <attribute name="action">app.hard</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Hardest</attribute>
+        <attribute name="action">app.hardest</attribute>
       </item>
     </section>
   </menu>

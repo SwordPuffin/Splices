@@ -44,16 +44,20 @@ class SplicesApplication(Adw.Application):
         self.create_action('about', self.on_about_action)
         self.create_action('free_play', self.free_play)
         self.create_action('timed', self.timed)
-        self.create_action('normal_game', self.normal)
+        self.create_action('length', self.length)
+        self.create_action('normal', self.normal)
+        self.create_action('hard', self.hard)
+        self.create_action('hardest', self.hardest)
 
     # The three functions that run when the player hits the buttons that game mode
     # free_play: no timer or word limit
     # timed: no word limit but must be completed within a certain time frame
-    # normal: no time limit but there only a limited number of words so try to make them as long as possible
+    # length: no time limit but there only a limited number of words so try to make them as long as possible
     def free_play(self, widget, _):
         self.window = self.props.active_window
         self.window.normal_game = False
         self.window.clock.set_visible(False)
+        self.window.extra.set_visible(False)
 
     def timed(self, widget, _):
         self.window = self.props.active_window
@@ -61,12 +65,26 @@ class SplicesApplication(Adw.Application):
         self.window = self.props.active_window
         self.window.normal_game = False
         self.window.clock.set_visible(True)
-
-    def normal(self, widget, _):
+        self.window.extra.set_visible(True)
+        
+    def length(self, widget, _):
         self.window = self.props.active_window
         self.window.normal_game = True
         self.window.clock.set_visible(True)
+        self.window.extra.set_visible(True)
         self.window.clock.set_label("Words left: 5")
+        
+    def normal(self, widget, _):
+        self.window = self.props.active_window
+        self.window.consonant_list = self.window.normal_consonants
+    
+    def hard(self, widget, _):
+        self.window = self.props.active_window
+        self.window.consonant_list = self.window.hard_consonants
+    
+    def hardest(self, widget, _):
+        self.window = self.props.active_window
+        self.window.consonant_list = self.window.hardest_consonants
 
     def do_activate(self):
         """Called when the application is activated.
@@ -85,7 +103,7 @@ class SplicesApplication(Adw.Application):
                                 modal=True,
                                 program_name='Splices',
                                 logo_icon_name='io.github.swordpuffin.splices',
-                                version='1.0.4',
+                                version='1.1.0',
                                 authors=['Nathan Perlman (SwordPuffin)'],
                                 copyright='© 2024 Nathan Perlman')
         about.set_website('https://github.com/SwordPuffin')

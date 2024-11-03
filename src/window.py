@@ -39,7 +39,11 @@ class SplicesWindow(Gtk.ApplicationWindow):
 
     found = []
     game_active = False
-    consonants = ["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z"]
+    normal_consonants = ["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z"]
+    #Both hard_consonants, and hardest_consonants are not necessarily consonants, just combinations 
+    hard_consonants = ["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z", "AB", "TH", "PI", "EA", "VE", "MA", "LE", "CR", "CH", "SO", "BR", "RY"]
+    hardest_consonants = ["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z", "AB", "TH", "PI", "EA", "VE", "MA", "LE", "CR", "CH", "SO", "BR", "RY", "AW", "NA", "GR", "JE", "EX", "FR", "SY"]
+    consonant_list = []
     vowels = ["A", "E", "I", "O", "U"]
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -77,7 +81,10 @@ class SplicesWindow(Gtk.ApplicationWindow):
         self.set_title("")
         self.normal_game = False
         self.words = 5
-        # self.set_cursor_theme_size(31)
+        #Extra points for rarer letters (x, z, y, etc.)
+        self.additional = 0
+        self.found_words.set_label("(You can use 'w' to add or delete the word you inputted)")
+        self.consonant_list = self.normal_consonants 
 
     #Checks if the submitted word exists in words.txt
     def check(self, actiom, _):
@@ -89,7 +96,13 @@ class SplicesWindow(Gtk.ApplicationWindow):
                     #If the word was in words.txt and was not already found. The brackets are used to signify the start and end of the word. EX. /start/
                      if f"/{self.current_word.get_label().lower()}/" in line and f"/{self.current_word.get_label().lower()}/" not in self.found:
                         self.found.append(f"/{self.current_word.get_label().lower()}/")
-                        self.current_score += len(self.current_word.get_label())
+                        for letter in self.current_word.get_label():
+                            if(letter in "WVJ"):
+                                self.additional += 1
+                            elif(letter in "XZQY"):
+                                self.additional += 2
+                        self.current_score += len(self.current_word.get_label()) + self.additional
+                        self.additional = 0
                         self.score.set_label(f"Score: {self.current_score}")
                         self.found_words.set_label(self.found_words.get_label() + "  " + self.current_word.get_label())
                         self.current_word.set_label("")
@@ -118,7 +131,7 @@ class SplicesWindow(Gtk.ApplicationWindow):
 
     #Function activated when a letter is selected from the grid.
     def letter_selected(self, action, _, button):
-        self.current_word.set_label(self.current_word.get_label() + button.get_label())
+        self.current_word.set_label(self.current_word.get_label() + button.get_child().get_first_child().get_label())
         button.add_css_class("selected_button")
         button.set_sensitive(False)
 
@@ -136,12 +149,13 @@ class SplicesWindow(Gtk.ApplicationWindow):
     def on_start_clicked(self, action, _):
         self.game_active = not self.game_active
         self.game_list.set_visible(not self.game_active)
-        self.extra.set_visible(not self.game_active)
+        self.found_words.set_label("")
         self.game_state()
         self.color_change()
         self.elapsed_time = 0
         self.found.clear()
-
+        if(self.clock.is_visible()):
+            self.extra.set_visible(not self.game_active)
         #If it is a normal game, just reset the words back to five. If it is a timed game, set the clock to 30 seconds once the game is over
         if(self.game_active == False and self.normal_game == False):
             self.timer = 30
@@ -171,7 +185,6 @@ class SplicesWindow(Gtk.ApplicationWindow):
             self.start_button.add_css_class("suggested-action")
             self.start_button.set_label("Start")
             self.current_word.set_label("")
-            self.found_words.set_label("")
             self.score.set_label("")
             self.current_score = 0
         self.set()
@@ -181,8 +194,21 @@ class SplicesWindow(Gtk.ApplicationWindow):
         count = 1
         for child_of_grid in self.grid:
             if(self.game_active):
-                vowel_or_consonant = random.choice([self.vowels, self.consonants])
-                child_of_grid.set_label(random.choice(vowel_or_consonant))
+                vowel_or_consonant = random.choice([self.vowels, self.consonant_list])
+                inside_button = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
+                plus = Gtk.Label()
+                plus.set_valign(Gtk.Align.START)
+                letter = Gtk.Label(label=random.choice(vowel_or_consonant))
+                inside_button.append(letter)
+                if(letter.get_label() in "WVJ"):
+                    plus.set_markup('<span size="10000">+1</span>')   
+                    inside_button.append(plus)
+                elif(letter.get_label() in "XZQY"):
+                    plus.set_markup('<span size="10000">+2</span>')   
+                    inside_button.append(plus)
+                inside_button.set_halign(Gtk.Align.CENTER) 
+                child_of_grid.set_child(inside_button)
+                
             else:
                 child_of_grid.set_label("")
             letter_action = Gio.SimpleAction.new(f"item{count}", None)

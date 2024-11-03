@@ -85,6 +85,7 @@
 /because/
 /people/
 /too/
+/leech/
 /little/
 /those/
 /very/
