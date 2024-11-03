@@ -20,9 +20,9 @@ Ctl-? - Show keyboard shortcuts
 
 # Screenshots
 
-![Screenshot](https://github.com/SwordPuffin/Splices/blob/master/data/Screenshot.png)
+![Screenshot](https://github.com/SwordPuffin/Splices/blob/master/data/Screenshot1.png)
 
-![Screenshot](https://github.com/SwordPuffin/Splices/blob/master/data/In_Game_Screenshot.png)
+![Screenshot](https://github.com/SwordPuffin/Splices/blob/master/data/Screenshot2.png)
 
 # Downloading
 
