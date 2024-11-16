@@ -44,6 +44,8 @@ class SplicesWindow(Gtk.ApplicationWindow):
     hard_consonants = ["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z", "AB", "TH", "PI", "EA", "VE", "MA", "LE", "CR", "CH", "SO", "BR", "RY"]
     hardest_consonants = ["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z", "AB", "TH", "PI", "EA", "VE", "MA", "LE", "CR", "CH", "SO", "BR", "RY", "AW", "NA", "GR", "JE", "EX", "FR", "SY"]
     consonant_list = []
+    plus1_list = ["W", "V", "J", "CR", "PI", "RY", "SY"]
+    plus2_list = ["X", "Y", "Q", "Z", "AW", "VE", "BR", "FR"]
     vowels = ["A", "E", "I", "O", "U"]
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -96,11 +98,6 @@ class SplicesWindow(Gtk.ApplicationWindow):
                     #If the word was in words.txt and was not already found. The brackets are used to signify the start and end of the word. EX. /start/
                      if f"/{self.current_word.get_label().lower()}/" in line and f"/{self.current_word.get_label().lower()}/" not in self.found:
                         self.found.append(f"/{self.current_word.get_label().lower()}/")
-                        for letter in self.current_word.get_label():
-                            if(letter in "WVJ"):
-                                self.additional += 1
-                            elif(letter in "XZQY"):
-                                self.additional += 2
                         self.current_score += len(self.current_word.get_label()) + self.additional
                         self.additional = 0
                         self.score.set_label(f"Score: {self.current_score}")
@@ -115,6 +112,7 @@ class SplicesWindow(Gtk.ApplicationWindow):
                                 self.on_start_clicked(None, _)
                         return True
              self.current_word.set_label("")
+             self.additional = 0
              self.shake()
              return False
 
@@ -132,6 +130,10 @@ class SplicesWindow(Gtk.ApplicationWindow):
     #Function activated when a letter is selected from the grid.
     def letter_selected(self, action, _, button):
         self.current_word.set_label(self.current_word.get_label() + button.get_child().get_first_child().get_label())
+        if(button.get_child().get_first_child().get_label() in self.plus1_list):
+            self.additional += 1
+        elif(button.get_child().get_first_child().get_label() in self.plus2_list):
+            self.additional += 2
         button.add_css_class("selected_button")
         button.set_sensitive(False)
 
@@ -200,10 +202,10 @@ class SplicesWindow(Gtk.ApplicationWindow):
                 plus.set_valign(Gtk.Align.START)
                 letter = Gtk.Label(label=random.choice(vowel_or_consonant))
                 inside_button.append(letter)
-                if(letter.get_label() in "WVJ"):
+                if(letter.get_label() in self.plus1_list):
                     plus.set_markup('<span size="10000">+1</span>')   
                     inside_button.append(plus)
-                elif(letter.get_label() in "XZQY"):
+                elif(letter.get_label() in self.plus2_list):
                     plus.set_markup('<span size="10000">+2</span>')   
                     inside_button.append(plus)
                 inside_button.set_halign(Gtk.Align.CENTER) 
