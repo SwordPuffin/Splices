@@ -158,7 +158,7 @@ class SplicesWindow(Gtk.ApplicationWindow):
         self.found.clear()
         if(self.clock.is_visible()):
             self.extra.set_visible(not self.game_active)
-        #If it is a normal game, just reset the words back to five. If it is a timed game, set the clock to 30 seconds once the game is over
+        #If it is a length game, just reset the words back to five. If it is a timed game, set the clock to 30 seconds once the game is over
         if(self.game_active == False and self.normal_game == False):
             self.timer = 30
             self.clock.set_label("Time: 30s")
@@ -210,7 +210,6 @@ class SplicesWindow(Gtk.ApplicationWindow):
                     inside_button.append(plus)
                 inside_button.set_halign(Gtk.Align.CENTER) 
                 child_of_grid.set_child(inside_button)
-                
             else:
                 child_of_grid.set_label("")
             letter_action = Gio.SimpleAction.new(f"item{count}", None)

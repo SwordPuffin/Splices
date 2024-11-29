@@ -28,6 +28,9 @@ Ctl-? - Show keyboard shortcuts
     <img width='240' alt='Get it on Flathub' src='https://flathub.org/api/badge?locale=en'/>
 </a>
 
+<br />
+<br />
+
 Splices is available on the web with Flathub, or:
 ```
 flatpak install flathub io.github.swordpuffin.splices

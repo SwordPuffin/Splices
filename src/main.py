@@ -27,7 +27,6 @@ from gi.repository import Gtk, Gio, Gdk, Adw
 from .window import SplicesWindow
 
 class SplicesApplication(Adw.Application):
-    """The main application singleton class."""
 
     def __init__(self):
         super().__init__(application_id='io.github.swordpuffin.splices',
@@ -87,11 +86,6 @@ class SplicesApplication(Adw.Application):
         self.window.consonant_list = self.window.hardest_consonants
 
     def do_activate(self):
-        """Called when the application is activated.
-
-        We raise the application's main window, creating it if
-        necessary.
-        """
         win = self.props.active_window
         if not win:
             win = SplicesWindow(application=self)
@@ -103,7 +97,7 @@ class SplicesApplication(Adw.Application):
                                 modal=True,
                                 program_name='Splices',
                                 logo_icon_name='io.github.swordpuffin.splices',
-                                version='1.1.1',
+                                version='1.1.2',
                                 authors=['Nathan Perlman (SwordPuffin)'],
                                 copyright='© 2024 Nathan Perlman')
         about.set_website('https://github.com/SwordPuffin')
@@ -111,14 +105,6 @@ class SplicesApplication(Adw.Application):
 
 
     def create_action(self, name, callback, shortcuts=None):
-        """Add an application action.
-
-        Args:
-            name: the name of the action
-            callback: the function to be called when the action is
-              activated
-            shortcuts: an optional list of accelerators
-        """
         action = Gio.SimpleAction.new(name, None)
         action.connect("activate", callback)
         self.add_action(action)
@@ -126,6 +112,5 @@ class SplicesApplication(Adw.Application):
             self.set_accels_for_action(f"app.{name}", shortcuts)
 
 def main(version):
-    """The application's entry point."""
     app = SplicesApplication()
     return app.run(sys.argv)
