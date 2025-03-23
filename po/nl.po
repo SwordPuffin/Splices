@@ -42,8 +42,8 @@ msgid ""
 "is maximize the size of the words"
 msgstr ""
 "Een spelletje voor tussendoor waarin je woorden moet maken op basis van "
-"willekeurig verschijnende letters. Er zijn drie spelmodi beschikbaar: vrij "
-"spelen, race tegen de klok en zwaan kleef aan. In de laatste moet je zo "
+"willekeurig verschijnende letters. Er zijn drie spelvormen beschikbaar: vrij "
+"spelen, race tegen de klok en zwaan kleef aan. In laatstgenoemde vorm moet je zo "
 "veel mogelijk letters zien te gebruiken."
 
 #: data/io.github.swordpuffin.splices.metainfo.xml.in:22
@@ -64,7 +64,7 @@ msgstr "_Over Woordzoeker"
 
 #: src/window.ui:320
 msgid "Modes"
-msgstr "Modi"
+msgstr "Spelvormen"
 
 #: src/window.ui:322
 msgid "_Length"
