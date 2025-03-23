@@ -21,7 +21,7 @@ msgstr ""
 #: data/io.github.swordpuffin.splices.desktop.in:2
 #: data/io.github.swordpuffin.splices.metainfo.xml.in:4
 msgid "Splices"
-msgstr "Woordzoeker"
+msgstr "Woordspel"
 
 #: data/io.github.swordpuffin.splices.desktop.in:4
 msgid "Word building game"
