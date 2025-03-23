@@ -1,0 +1,95 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the splices package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: splices\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-29 05:10+0100\n"
+"PO-Revision-Date: 2025-03-23 11:56+0100\n"
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+
+#: data/io.github.swordpuffin.splices.desktop.in:2
+#: data/io.github.swordpuffin.splices.metainfo.xml.in:4
+msgid "Splices"
+msgstr "Woordzoeker"
+
+#: data/io.github.swordpuffin.splices.desktop.in:4
+msgid "Word building game"
+msgstr "Een spel waarin je woorden moet maken"
+
+#: data/io.github.swordpuffin.splices.desktop.in:9
+msgid "words;letters;"
+msgstr "woorden;letters;"
+
+#: data/io.github.swordpuffin.splices.metainfo.xml.in:7
+msgid "A word making game"
+msgstr "Een spel waarin je woorden moet maken"
+
+#: data/io.github.swordpuffin.splices.metainfo.xml.in:17
+msgid ""
+"A small time killer where you make words out of randomly generated letters. "
+"You can play in either free play mode, timed, or length mode where the goal "
+"is maximize the size of the words"
+msgstr ""
+"Een spelletje voor tussendoor waarin je woorden moet maken op basis van "
+"willekeurig verschijnende letters. Er zijn drie spelmodi beschikbaar: vrij "
+"spelen, race tegen de klok en zwaan kleef aan. In de laatste moet je zo "
+"veel mogelijk letters zien te gebruiken."
+
+#: data/io.github.swordpuffin.splices.metainfo.xml.in:22
+msgid "Nathan Perlman"
+msgstr "Nathan Perlman"
+
+#: src/window.ui:23
+msgid "Menu"
+msgstr "Menu"
+
+#: src/window.ui:309
+msgid "_Keyboard Shortcuts"
+msgstr "_Sneltoetsen"
+
+#: src/window.ui:313
+msgid "_About Splices"
+msgstr "_Over Woordzoeker"
+
+#: src/window.ui:320
+msgid "Modes"
+msgstr "Modi"
+
+#: src/window.ui:322
+msgid "_Length"
+msgstr "Zwaan k_leef aan"
+
+#: src/window.ui:326
+msgid "_Free Play"
+msgstr "_Vrij spelen"
+
+#: src/window.ui:330
+msgid "_Timed"
+msgstr "Race _tegen de klok"
+
+#: src/window.ui:335
+msgid "Difficulties"
+msgstr "Moeilijkheidsgraad"
+
+#: src/window.ui:337
+msgid "_Normal"
+msgstr "_Normaal"
+
+#: src/window.ui:341
+msgid "_Hard"
+msgstr "_Moeilijk"
+
+#: src/window.ui:345
+msgid "_Hardest"
+msgstr "_Moeilijkst"
