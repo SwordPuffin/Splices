@@ -17,11 +17,11 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-import gi
-import random
+import gi, random
 gi.require_version('Adw', '1')
 gi.require_version('Gtk', '4.0')
-from gi.repository import Gtk, Adw, Gio, GLib, Gdk
+gi.require_version('Spelling', '1')
+from gi.repository import Gtk, Adw, Gio, GLib, Gdk, Spelling
 @Gtk.Template(resource_path='/io/github/swordpuffin/splices/window.ui')
 class SplicesWindow(Gtk.ApplicationWindow):
 
@@ -51,7 +51,7 @@ class SplicesWindow(Gtk.ApplicationWindow):
         super().__init__(**kwargs)
 
         css_provider = Gtk.CssProvider()
-        css_provider.load_from_path("/app/share/splices/splices/style.css")
+        css_provider.load_from_data(self.css.encode("utf-8"))
         Gtk.StyleContext.add_provider_for_display(
             Gdk.Display.get_default(), css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER
         )
@@ -80,41 +80,41 @@ class SplicesWindow(Gtk.ApplicationWindow):
         #Keep the window at one set size just given its layout looked very unusual at full screen
         self.set_resizable(False)
 
+        self.start_button.set_can_focus(False); self.extra.set_can_focus(False); self.game_list.set_can_focus(False)
         self.set_title("")
         self.normal_game = False
         self.words = 5
         #Extra points for rarer letters (x, z, y, etc.)
         self.additional = 0
-        self.found_words.set_label("(You can use 'w' to add or delete the word you inputted)")
+        self.found_words.set_label("(Use the spacebar to enter the word you have selected)")
         self.consonant_list = self.normal_consonants 
 
     #Checks if the submitted word exists in words.txt
-    def check(self, actiom, _):
+    def check(self, action, _):
         #Only activate this code when there is actually a word that the player is trying to submit. This stops spam which causes the timer to lag
-         if(len(self.current_word.get_label()) > 0):
-             self.color_change()
-             with open("/app/share/splices/splices/words.txt", 'r') as file:
-                 for line in file:
-                    #If the word was in words.txt and was not already found. The brackets are used to signify the start and end of the word. EX. /start/
-                     if f"/{self.current_word.get_label().lower()}/" in line and f"/{self.current_word.get_label().lower()}/" not in self.found:
-                        self.found.append(f"/{self.current_word.get_label().lower()}/")
-                        self.current_score += len(self.current_word.get_label()) + self.additional
-                        self.additional = 0
-                        self.score.set_label(f"Score: {self.current_score}")
-                        self.found_words.set_label(self.found_words.get_label() + "  " + self.current_word.get_label())
-                        self.current_word.set_label("")
-                        if(self.normal_game):
-                            self.words -= 1
-                            self.clock.set_label(f"Words left: {self.words}")
-                            if(self.words == 0):
-                                #Show the end dialog once the player has run out of words
-                                self.end_dialog()
-                                self.on_start_clicked(None, _)
-                        return True
+         self.color_change()
+         if(len(self.current_word.get_label()) > 2):
+             checker = Spelling.Checker.get_default()
+             if(checker.check_word(self.current_word.get_label().lower(), len(self.current_word.get_label().lower())) and self.current_word.get_label().lower() not in self.found):
+                self.found.append(self.current_word.get_label().lower())
+                self.current_score += len(self.current_word.get_label()) + self.additional
+                self.additional = 0
+                self.score.set_label(f"Score: {self.current_score}")
+                self.found_words.set_label(self.found_words.get_label() + "  " + self.current_word.get_label())
+                self.current_word.set_label("")
+                if(self.normal_game):
+                    self.words -= 1
+                    self.clock.set_label(f"Words left: {self.words}")
+                    if(self.words == 0):
+                        #Show the end dialog once the player has run out of words
+                        self.end_dialog()
+                        self.on_start_clicked(None, _)
+                return True
+         if(self.current_word.get_label()):
              self.current_word.set_label("")
              self.additional = 0
              self.shake()
-             return False
+         return False
 
     #Shakes the current_word box when the word the user is trying to enter does not exist.
     def shake(self):
@@ -198,8 +198,7 @@ class SplicesWindow(Gtk.ApplicationWindow):
             if(self.game_active):
                 vowel_or_consonant = random.choice([self.vowels, self.consonant_list])
                 inside_button = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
-                plus = Gtk.Label()
-                plus.set_valign(Gtk.Align.START)
+                plus = Gtk.Label(valign=Gtk.Align.START)
                 letter = Gtk.Label(label=random.choice(vowel_or_consonant))
                 inside_button.append(letter)
                 if(letter.get_label() in self.plus1_list):
@@ -237,13 +236,36 @@ class SplicesWindow(Gtk.ApplicationWindow):
         if(self.normal_game):
             length = Gtk.Label(label="You got " + self.score.get_label().replace("Score: ", "") + " points in " + str(len(self.found)) + " words")
         else:
-            length = Gtk.Label(label="You got " + self.score.get_label().replace("Score: ", "") + " points in " + str(self.start_time) + " seconds")
-        found_list = Gtk.Label(label=self.found_words.get_label())
+            length = Gtk.Label(margin_start=30, margin_end=30, margin_top=30, margin_bottom=20, label="You got " + self.score.get_label().replace("Score: ", "") + " points in " + str(self.start_time) + " seconds")
+        found_list = Gtk.Label(margin_start=30, margin_end=30, margin_top=20, margin_bottom=20,label=self.found_words.get_label())
         content.append(length), content.append(found_list)
-        length.set_margin_start(30),  found_list.set_margin_start(30)
-        length.set_margin_end(30), found_list.set_margin_end(30)
-        length.set_margin_top(30), found_list.set_margin_top(20)
-        length.set_margin_bottom(20), found_list.set_margin_bottom(20)
         length.add_css_class("title-3"), found_list.add_css_class("title-4")
         dialog.present()
+
+    css = """
+    .selected_button {
+        background-color: @green_5;
+    }
+
+    .shake {
+        animation: shake_animation 0.5s ease;
+        background-color: red;
+    }
+
+    .box {
+      background-color: @borders;
+      border: none;
+      padding-top: 17px;
+    }
+
+    @keyframes shake_animation {
+        0% { transform: translateX(0px); }
+        20% { transform: translateX(-4px); }
+        40% { transform: translateX(4px); }
+        60% { transform: translateX(-4px); }
+        80% { transform: translateX(4px); }
+        100% { transform: translateX(0px); }
+    }
+    """
+
 

@@ -22,6 +22,7 @@
                 <property name="icon-name">open-menu-symbolic</property>
                 <property name="tooltip-text" translatable="yes">Menu</property>
                 <property name="menu-model">primary_menu</property>
+                <property name="can-focus">false</property>
               </object>
             </child>
           </object>

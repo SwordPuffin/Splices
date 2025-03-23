@@ -30,8 +30,6 @@ splices_sources = [
   '__init__.py',
   'main.py',
   'window.py',
-  'words.txt',
-  'style.css',
 ]
 
 install_data(splices_sources, install_dir: moduledir)

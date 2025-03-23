@@ -21,19 +21,16 @@ msgstr ""
 #: data/io.github.swordpuffin.splices.desktop.in:2
 #: data/io.github.swordpuffin.splices.metainfo.xml.in:4
 msgid "Splices"
-msgstr "Woordspel"
+msgstr "Splitsingen"
 
 #: data/io.github.swordpuffin.splices.desktop.in:4
-msgid "Word building game"
+#: data/io.github.swordpuffin.splices.metainfo.xml.in:7
+msgid "A word making game"
 msgstr "Een spel waarin je woorden moet maken"
 
 #: data/io.github.swordpuffin.splices.desktop.in:9
 msgid "words;letters;"
 msgstr "woorden;letters;"
-
-#: data/io.github.swordpuffin.splices.metainfo.xml.in:7
-msgid "A word making game"
-msgstr "Een spel waarin je woorden moet maken"
 
 #: data/io.github.swordpuffin.splices.metainfo.xml.in:17
 msgid ""

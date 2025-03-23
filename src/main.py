@@ -32,11 +32,11 @@ class SplicesApplication(Adw.Application):
         super().__init__(application_id='io.github.swordpuffin.splices',
                          flags=Gio.ApplicationFlags.DEFAULT_FLAGS)
 
-        icon_theme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default())
-        icon_theme.add_resource_path("../data/icons/scalable/apps")
-        icon_theme.add_resource_path("../data/icons/symbolic/apps")
+        # icon_theme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default())
+        # icon_theme.add_resource_path("../data/icons/scalable/apps")
+        # icon_theme.add_resource_path("../data/icons/symbolic/apps")
 
-        self.set_accels_for_action('win.enter', ['w'])
+        self.set_accels_for_action('win.enter', ['space'])
         self.set_accels_for_action('win.start', ['s'])
 
         self.create_action('quit', lambda *_: self.quit(), ['<primary>q'])
@@ -97,7 +97,7 @@ class SplicesApplication(Adw.Application):
                                 modal=True,
                                 program_name='Splices',
                                 logo_icon_name='io.github.swordpuffin.splices',
-                                version='1.1.2',
+                                version='1.1.3',
                                 authors=['Nathan Perlman (SwordPuffin)'],
                                 copyright='© 2024 Nathan Perlman')
         about.set_website('https://github.com/SwordPuffin')
