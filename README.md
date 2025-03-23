@@ -8,7 +8,7 @@ There are three modes: length, free play, and timed. The goal in length mode is 
 
 # Keybinds
 
-w - Enter completed word (or not completed word to delete it)
+spacebar - Enter completed word (or not completed word to delete it)
 
 s - Stop or start a game
 
