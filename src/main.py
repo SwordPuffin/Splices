@@ -1,6 +1,6 @@
 # main.py
 #
-# Copyright 2024 Nathan Perlman
+# Copyright 2025 Nathan Perlman
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -17,8 +17,7 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-import sys
-import gi
+import sys, gi
 
 gi.require_version('Gtk', '4.0')
 gi.require_version('Adw', '1')
@@ -31,10 +30,6 @@ class SplicesApplication(Adw.Application):
     def __init__(self):
         super().__init__(application_id='io.github.swordpuffin.splices',
                          flags=Gio.ApplicationFlags.DEFAULT_FLAGS)
-
-        # icon_theme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default())
-        # icon_theme.add_resource_path("../data/icons/scalable/apps")
-        # icon_theme.add_resource_path("../data/icons/symbolic/apps")
 
         self.set_accels_for_action('win.enter', ['space'])
         self.set_accels_for_action('win.start', ['s'])
@@ -75,15 +70,15 @@ class SplicesApplication(Adw.Application):
         
     def normal(self, widget, _):
         self.window = self.props.active_window
-        self.window.consonant_list = self.window.normal_consonants
+        self.window.word_list = self.window.normal_words
     
     def hard(self, widget, _):
         self.window = self.props.active_window
-        self.window.consonant_list = self.window.hard_consonants
+        self.window.word_list = self.window.hard_words
     
     def hardest(self, widget, _):
         self.window = self.props.active_window
-        self.window.consonant_list = self.window.hardest_consonants
+        self.window.word_list = self.window.hardest_words
 
     def do_activate(self):
         win = self.props.active_window

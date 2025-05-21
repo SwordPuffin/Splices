@@ -1,6 +1,6 @@
 # window.py
 #
-# Copyright 2024 Nathan Perlman
+# Copyright 2025 Nathan Perlman
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -39,17 +39,18 @@ class SplicesWindow(Gtk.ApplicationWindow):
 
     found = []
     game_active = False
-    normal_consonants = ["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z"]
-    #Both hard_consonants, and hardest_consonants are not necessarily consonants, just combinations 
-    hard_consonants = ["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z", "AB", "TH", "PI", "EA", "VE", "MA", "LE", "CR", "CH", "SO", "BR", "RY"]
-    hardest_consonants = ["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z", "AB", "TH", "PI", "EA", "VE", "MA", "LE", "CR", "CH", "SO", "BR", "RY", "AW", "NA", "GR", "JE", "EX", "FR", "SY"]
-    consonant_list = []
+    normal_words = ["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z"]
+    hard_words = ["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z", "AB", "TH", "PI", "EA", "VE", "MA", "LE", "CR", "CH", "SO", "BR", "RY"]
+    hardest_words = ["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z", "AB", "TH", "PI", "EA", "VE", "MA", "LE", "CR", "CH", "SO", "BR", "RY", "AW", "NA", "GR", "JE", "EX", "FR", "SY"]
+    word_list = []
     plus1_list = ["W", "V", "J", "CR", "PI", "RY", "SY"]
     plus2_list = ["X", "Y", "Q", "Z", "AW", "VE", "BR", "FR"]
+
     vowels = ["A", "E", "I", "O", "U"]
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
+        self.set_resizable(False)
         css_provider = Gtk.CssProvider()
         css_provider.load_from_data(self.css.encode("utf-8"))
         Gtk.StyleContext.add_provider_for_display(
@@ -70,28 +71,23 @@ class SplicesWindow(Gtk.ApplicationWindow):
         self.add_action(check_word)
 
         self.timer = 30
-
-        #Start timer logs the time that has elapsed since the start to be used in the results dialog when the time runs out
         self.start_time = 30
 
         self.current_score = 0
         self.timer_id = None
 
-        #Keep the window at one set size just given its layout looked very unusual at full screen
-        self.set_resizable(False)
-
         self.start_button.set_can_focus(False); self.extra.set_can_focus(False); self.game_list.set_can_focus(False)
         self.set_title("")
         self.normal_game = False
         self.words = 5
+
         #Extra points for rarer letters (x, z, y, etc.)
         self.additional = 0
-        self.found_words.set_label("(Use the spacebar to enter the word you have selected)")
-        self.consonant_list = self.normal_consonants 
+        self.found_words.set_label((_("Use the spacebar to enter the word you have selected")))
+        self.word_list = self.normal_words
 
     #Checks if the submitted word exists in words.txt
     def check(self, action, _):
-        #Only activate this code when there is actually a word that the player is trying to submit. This stops spam which causes the timer to lag
          self.color_change()
          if(len(self.current_word.get_label()) > 2):
              checker = Spelling.Checker.get_default()
@@ -106,7 +102,6 @@ class SplicesWindow(Gtk.ApplicationWindow):
                     self.words -= 1
                     self.clock.set_label(f"Words left: {self.words}")
                     if(self.words == 0):
-                        #Show the end dialog once the player has run out of words
                         self.end_dialog()
                         self.on_start_clicked(None, _)
                 return True
@@ -196,7 +191,7 @@ class SplicesWindow(Gtk.ApplicationWindow):
         count = 1
         for child_of_grid in self.grid:
             if(self.game_active):
-                vowel_or_consonant = random.choice([self.vowels, self.consonant_list])
+                vowel_or_consonant = random.choice([self.vowels, self.word_list])
                 inside_button = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
                 plus = Gtk.Label(valign=Gtk.Align.START)
                 letter = Gtk.Label(label=random.choice(vowel_or_consonant))
