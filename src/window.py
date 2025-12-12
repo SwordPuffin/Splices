@@ -17,7 +17,7 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-import gi, random
+import gi, random, os
 gi.require_version('Adw', '1')
 gi.require_version('Gtk', '4.0')
 gi.require_version('Spelling', '1')
@@ -52,7 +52,7 @@ class SplicesWindow(Gtk.ApplicationWindow):
 
         self.set_resizable(False)
         css_provider = Gtk.CssProvider()
-        css_provider.load_from_data(self.css.encode("utf-8"))
+        css_provider.load_from_data(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "styles.css")).read())
         Gtk.StyleContext.add_provider_for_display(
             Gdk.Display.get_default(), css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER
         )
@@ -83,10 +83,10 @@ class SplicesWindow(Gtk.ApplicationWindow):
 
         #Extra points for rarer letters (x, z, y, etc.)
         self.additional = 0
-        self.found_words.set_label((_("Use the spacebar to enter the word you have selected")))
+        self.found_words.set_label((_("Use 'spacebar' to enter the word you have selected")))
         self.word_list = self.normal_words
 
-    #Checks if the submitted word exists in words.txt
+    #Checks if the inputted word is valid
     def check(self, action, _):
          self.color_change()
          if(len(self.current_word.get_label()) > 2):
@@ -236,31 +236,4 @@ class SplicesWindow(Gtk.ApplicationWindow):
         content.append(length), content.append(found_list)
         length.add_css_class("title-3"), found_list.add_css_class("title-4")
         dialog.present()
-
-    css = """
-    .selected_button {
-        background-color: @green_5;
-    }
-
-    .shake {
-        animation: shake_animation 0.5s ease;
-        background-color: red;
-    }
-
-    .box {
-      background-color: @borders;
-      border: none;
-      padding-top: 17px;
-    }
-
-    @keyframes shake_animation {
-        0% { transform: translateX(0px); }
-        20% { transform: translateX(-4px); }
-        40% { transform: translateX(4px); }
-        60% { transform: translateX(-4px); }
-        80% { transform: translateX(4px); }
-        100% { transform: translateX(0px); }
-    }
-    """
-
 

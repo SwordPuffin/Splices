@@ -92,9 +92,9 @@ class SplicesApplication(Adw.Application):
                                 modal=True,
                                 program_name='Splices',
                                 logo_icon_name='io.github.swordpuffin.splices',
-                                version='1.1.3',
-                                authors=['Nathan Perlman (SwordPuffin)'],
-                                copyright='© 2024 Nathan Perlman')
+                                version='1.1.4',
+                                authors=['Nathan Perlman'],
+                                copyright='© 2025 Nathan Perlman')
         about.set_website('https://github.com/SwordPuffin')
         about.present()
 
