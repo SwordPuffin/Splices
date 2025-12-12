@@ -1,7 +1,12 @@
 # Splices
 
-<p align="center">
+<h4 align="center">
  A word making game
+</h4>
+<p align="center">
+  <a href="https://flathub.org/apps/io.github.swordpuffin.wardrobe">
+    <img width="200" alt="Get it on Flathub" src="https://flathub.org/api/badge?svg&locale=en"/>
+  </a>
 </p>
 
 # How To Play
@@ -25,15 +30,6 @@ Ctl-? - Show keyboard shortcuts
 ![Screenshot](https://github.com/SwordPuffin/Splices/blob/master/data/Screenshot2.png)
 
 # Downloading
-
-<p align="center">
-  <a href="https://flathub.org/apps/io.github.swordpuffin.wardrobe">
-    <img width="200" alt="Get it on Flathub" src="https://flathub.org/api/badge?svg&locale=en"/>
-  </a>
-</p>
-
-<br />
-<br />
 
 Splices is available on the web with Flathub, or:
 ```
